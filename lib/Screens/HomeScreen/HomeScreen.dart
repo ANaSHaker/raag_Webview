@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:fetan_lottery/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +8,7 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:ui' as ui;
 
-import 'components/custom_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -62,14 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: Scaffold(
           key: _scaffoldKey,
-         /* appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            title: CustomAppBar(() {
-              homeProviderTrue!.inAppWebViewController!.reload();
-            }),
 
-          ),*/
           floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(bottom: 70.0),
@@ -122,18 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 onLoadStart: (controller, url) async {
                   print(url.toString());
-                      if (url.toString().contains('whatsapp')) {
+                      if (!url.toString().contains('https://raayeg.net')) {
                         await                launch(url.toString());
                       }
-                  if(url.toString().contains('tel')){
-                    await                launch(url.toString());
-                  }
-                  if(url.toString().contains('menu_id=389')){
-                    await                launch(url.toString());
-                  }
-                  if(url.toString().contains('mailto')) {
-                    await                launch(url.toString());
-                  }
+
                   pullToRefreshController!.endRefreshing();
                   homeProviderFalse!.inAppWebViewController = controller;
                 },
