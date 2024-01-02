@@ -39,9 +39,12 @@ class _SplashScreenState extends State<SplashScreen> {
           }
         },
         child: Scaffold(
-          body: Center(child: Container(
-              height: MediaQuery.of(context).size.height,
-              child: Image.asset('assets/images/splash.png',fit: BoxFit.cover,))),
+          body: Center(child: ClipRRect(
+            borderRadius: BorderRadius.circular(15.r),
+            child: Container(
+                height: 125.h,
+                child: Image.asset('assets/images/app_logo.png',fit: BoxFit.contain,)),
+          )),
         ),
       ),
     );
